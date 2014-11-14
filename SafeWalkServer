@@ -1,0 +1,50 @@
+import java.net.*;
+import java.io.*;
+
+public class SafeWalkServer implements Runnable{
+
+	private int port;
+	private ServerSocket ss;
+	private Socket client;
+	
+
+	public SafeWalkServer(int port) throws IOException {
+		this.port = port;
+		
+		if (port < 1025 || port > 65535) {
+			System.out.println("Invalid port number :(");
+			System.exit(port);
+		}
+		ss = new ServerSocket(port);
+		client = ss.accept();
+		client.setReuseAddress(true);
+	}
+	
+	public SafeWalkServer() throws IOException {
+		port = 8888;
+		ss = new ServerSocket(port);
+		System.out.println("Port not specified. Connecting to port 8888.");
+		client = ss.accept();
+		client.setReuseAddress(true);
+
+	}
+	public void run() {
+		while (true) {
+				try {
+					Socket client = ss.accept();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+	}
+	
+	public int getLoaclPort() {
+		return port;
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
