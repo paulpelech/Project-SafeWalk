@@ -1,0 +1,18 @@
+class StringThing {
+    public static void main(String[] args) {
+        String yes1 = "Steve,CL50,EE,0";
+        int a = yes1.indexOf(',') + 1;
+        
+        String yes2 = yes1.substring(a);
+        int b = yes2.indexOf(',');
+        
+        String yes3 = yes2.substring(b + 1);
+        int c = yes3.indexOf(',');
+        
+        String loc = yes1.substring(a, a + b);
+        String dest = yes1.substring(a + b + 1, a + b + c + 1);
+
+        System.out.println(loc);
+        System.out.println(dest);
+    }
+}
